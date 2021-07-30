@@ -7,6 +7,10 @@ Dynamically source `.envrc` files when changing directories.
 This project uses `/tmp/envrc` to store fallback caches of `$USER`'s
 current environment before sourcing any visible `.envrc` files.
 
+## Installation
+
+Just run `./install.sh`.
+
 ## License
 
 This project operates under the [MIT Public License](LICENSE).

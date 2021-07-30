@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function source_envrc() {
+    if [ -f .envrc ]; then
+        printenv | grep -v '_=' >/tmp/envrc
+        sed -ri "s|^(.+)=(.+)$|\1='\2'|g" /tmp/envrc
+        source .envrc
+    elif [ -f /tmp/envrc ]; then
+        source /tmp/envrc && rm -f /tmp/envrc
+    fi
+}
+
+function cd() {
+    builtin cd "$@"
+    source_envrc
+}
+
+# Run this once off the bat.
+source_envrc
